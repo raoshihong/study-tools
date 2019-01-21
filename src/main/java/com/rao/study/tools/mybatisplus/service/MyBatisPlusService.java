@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.rao.study.tools.mybatisplus.aop.Cost;
 import com.rao.study.tools.mybatisplus.mapper.UserMapper;
 import com.rao.study.tools.mybatisplus.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,12 @@ public class MyBatisPlusService {
         userMapper.updateUser();
 
         int i=10/0;
+    }
+
+    @Cost
+    public void testTransactionAndAspect(){
+        userMapper.updateUser1();
+        System.out.println("testTransactionAndAspect");
     }
 
 }

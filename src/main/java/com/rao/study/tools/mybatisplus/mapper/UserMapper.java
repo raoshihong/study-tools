@@ -11,4 +11,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper extends BaseMapper<User> {
     IPage<User> selectPageVo(Page page, @Param("age") Integer state);
     void updateUser();
+    void updateUser1();
 }

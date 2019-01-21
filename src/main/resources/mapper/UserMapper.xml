@@ -7,4 +7,7 @@
     <update id="updateUser">
         update t_user set last_name = 'fff' where id = 4;
     </update>
+    <update id="updateUser1">
+        update t_user set last_name = 'fff' where id = 5;
+    </update>
 </mapper>
