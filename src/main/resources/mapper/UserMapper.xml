@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rao.study.tools.mybatisplus.mapper.UserMapper" >
+    <select id="selectPageVo" resultType="com.rao.study.tools.mybatisplus.po.User">
+    SELECT id,last_name FROM t_user WHERE age=#{age}
+</select>
+    <update id="updateUser">
+        update t_user set last_name = 'fff' where id = 4;
+    </update>
+</mapper>
