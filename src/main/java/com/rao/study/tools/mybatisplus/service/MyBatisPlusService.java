@@ -5,9 +5,11 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rao.study.tools.mybatisplus.aop.Cost;
+import com.rao.study.tools.mybatisplus.aop.Count;
 import com.rao.study.tools.mybatisplus.mapper.UserMapper;
 import com.rao.study.tools.mybatisplus.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -91,6 +93,17 @@ public class MyBatisPlusService {
     public void testTransactionAndAspect(){
         userMapper.updateUser1();
         System.out.println("testTransactionAndAspect");
+//        testCount();
+    }
+
+    @Count
+    public void testCount(){
+        User user = new User();
+        user.setLastName("fgdhgfdhfgs");
+        user.setAge(60);
+        user.setEmail("ffaaaaaaaa@qq.com");
+        user.setGender(false);
+        userMapper.insert(user);
     }
 
 }

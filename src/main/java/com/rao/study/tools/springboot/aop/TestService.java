@@ -2,7 +2,7 @@ package com.rao.study.tools.springboot.aop;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class TestService {
 
     public void test(){
