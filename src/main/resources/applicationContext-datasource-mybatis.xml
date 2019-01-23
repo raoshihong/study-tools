@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/mybatis_plus"/>
+		<property name="username" value="root"/>
+		<property name="password" value="123456"/>
+	</bean>
+
+
+	<!-- 数据源事务管理器，提供对单个javax.sql.DataSource事务管理，用于Spring JDBC、iBATIS等框架的事务管理 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 1.老版的切面事务的方式,创建的是DefaultBeanFactoryPointcutAdvisor -->
+
+	<!--&lt;!&ndash; 定义事务通知 &ndash;&gt;-->
+	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+		<!--&lt;!&ndash; 定义方法的过滤规则 &ndash;&gt;-->
+		<!--<tx:attributes>-->
+			<!--&lt;!&ndash; 所有方法都使用事务 &ndash;&gt;-->
+			<!--<tx:method name="test*" propagation="REQUIRED" rollback-for="Exception" />&lt;!&ndash; 指定对目标方法的aop拦截,处理事务,设置事务的传递和回滚,默认只对return (ex instanceof RuntimeException || ex instanceof Error);进行回滚,所以Exception是不会回滚的,需要设置rollback &ndash;&gt;-->
+			<!--&lt;!&ndash;<tx:method name="save*" propagation="REQUIRED" />&lt;!&ndash; 这里只是定义传递规则 &ndash;&gt;&ndash;&gt;-->
+			<!--<tx:method name="add*" propagation="REQUIRED" />-->
+			<!--<tx:method name="update*" propagation="REQUIRED" />-->
+			<!--<tx:method name="delete*" propagation="REQUIRED" />-->
+			<!--&lt;!&ndash; 定义所有find开头的方法都是只读的 &ndash;&gt;-->
+			<!--<tx:method name="find*" read-only="true" />-->
+			<!--<tx:method name="get*" read-only="true" />-->
+
+			<!--&lt;!&ndash;下面对方法定义回滚 &ndash;&gt;-->
+			<!--&lt;!&ndash;<tx:method name="*" rollback-for="Exception" />&lt;!&ndash; 指定所有的方法只要是Exception异常就进行回滚,不然默认只对runtimeException进行回滚 &ndash;&gt;&ndash;&gt;-->
+		<!--</tx:attributes>-->
+	<!--</tx:advice>-->
+
+	<!--&lt;!&ndash; 定义AOP配置 &ndash;&gt;-->
+	<!--<aop:config>-->
+		<!--&lt;!&ndash; 定义一个切入点 &ndash;&gt;-->
+		<!--<aop:pointcut id="services" expression="execution(* com.rao.study.tools.mybatisplus.service.*.*(..))" />-->
+		<!--&lt;!&ndash; 对切入点和事务的通知，进行适配 &ndash;&gt;-->
+		<!--<aop:advisor advice-ref="txAdvice" pointcut-ref="services"/>-->
+	<!--</aop:config>-->
+
+	<!-- 1.老版的切面事务的方式 -->
+
+
+	<!-- 2. 老版的声明式事务的方式,结合@Transaction使用,在@Transaction中指明事务的传递性,级别,什么类型的异常回滚-->
+	<!-- 使用了声明式事务后,可以不用上面的配置 -->
+	<!-- 声明式事务配置,结合@Transaction使用,在springboot中就不需要再使用这个注解了,直接使用@Transaction自动开启事务,或者通过@EnableTransactionManagement来设置事务级别 -->
+	<!--<tx:annotation-driven transaction-manager="transactionManager" />-->
+
+	<!-- 2. 老版的声明式事务的方式 -->
+
+	<!-- 注意,上面两种使用,最好是将springboot中自动启动的事物排除,再测试:@SpringBootApplication(exclude = {TransactionAutoConfiguration.class}) -->
+
+
+</beans>

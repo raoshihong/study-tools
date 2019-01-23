@@ -1,4 +1,4 @@
-package com.rao.study.tools.mybatisplus;
+package com.rao.study.tools.mybatisplus.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

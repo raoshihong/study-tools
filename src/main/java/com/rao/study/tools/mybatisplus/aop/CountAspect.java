@@ -1,10 +1,8 @@
 package com.rao.study.tools.mybatisplus.aop;
 
-import com.rao.study.tools.mybatisplus.SpringContextHolder;
+import com.rao.study.tools.mybatisplus.utils.SpringContextHolder;
 import com.rao.study.tools.mybatisplus.mapper.UserMapper;
 import org.aspectj.lang.annotation.*;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 //@Aspect
 //@Order(10)

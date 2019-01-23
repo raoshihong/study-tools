@@ -4,14 +4,13 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableTransactionManagement(order = 100)  //开启事务
+@EnableTransactionManagement(order = 2)  //开启事务
 @MapperScan("com.rao.study.tools.mybatisplus.mapper")
+//@ImportResource(locations = {"classpath:applicationContext-datasource-mybatis.xml"})
 @Configuration
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy
 public class MybatisConfig {
     /**
      * 分页插件

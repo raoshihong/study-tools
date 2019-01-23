@@ -9,7 +9,6 @@ import com.rao.study.tools.mybatisplus.aop.Count;
 import com.rao.study.tools.mybatisplus.mapper.UserMapper;
 import com.rao.study.tools.mybatisplus.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,7 +81,7 @@ public class MyBatisPlusService {
         userMapper.updateUser();
     }
 
-    @Transactional
+//    @Transactional
     public void testTransaction(){
         userMapper.updateUser();
 
@@ -90,9 +89,12 @@ public class MyBatisPlusService {
     }
 
     @Cost
-    public void testTransactionAndAspect(){
+    @Transactional(rollbackFor = Exception.class)
+    public void testTransactionAndAspect() throws Exception{
         userMapper.updateUser1();
         System.out.println("testTransactionAndAspect");
+//        int i=10/0;
+        throw new Exception();
 //        testCount();
     }
 

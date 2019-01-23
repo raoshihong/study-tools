@@ -58,7 +58,7 @@ public class MyBatisPlusController {
     }
 
     @GetMapping("/mybatisplus/testTransactionAndAspect")
-    public void testTransactionAndAspect(){
+    public void testTransactionAndAspect()throws Exception{
         myBatisPlusService.testTransactionAndAspect();
     }
 }

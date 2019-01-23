@@ -1,5 +1,6 @@
 package com.rao.study.tools.mybatisplus.aop;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@Transactional(isolation = Isolation.READ_UNCOMMITTED,propagation = Propagation.REQUIRED)
+//@Transactional(isolation = Isolation.READ_UNCOMMITTED,propagation = Propagation.REQUIRED)
+//@Order(2)
 public @interface Cost {
 }
