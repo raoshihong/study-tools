@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableTransactionManagement(order = 2)  //开启事务
+//@EnableTransactionManagement(order = 2)  //开启事务
 @MapperScan("com.rao.study.tools.mybatisplus.mapper")
 //@ImportResource(locations = {"classpath:applicationContext-datasource-mybatis.xml"})
 @Configuration
